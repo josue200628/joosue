@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Encuesta Estudiantil - Ministerio Nacional de Educación de Colombia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        .form-container img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+        }
+        .form-container h1 {
+            color: #0033a0;
+            margin: 20px 0;
+            font-size: 24px;
+            text-align: center;
+        }
+        .form-container h2 {
+            color: #0056b3;
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .form-container p {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .form-container label {
+            display: block;
+            margin: 8px 0 4px;
+            text-align: left;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="number"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container textarea {
+            height: 60px;
+            resize: vertical;
+        }
+        .form-container input[type="checkbox"] {
+            margin: 8px 0;
+        }
+        .form-container input[type="submit"],
+        .form-container button {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container input[type="submit"]:hover,
+        .form-container button:hover {
+            background-color: #004494;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Logo_Ministerio_de_Educaci%C3%B3n_de_Colombia.svg" alt="Ministerio de Educación Nacional de Colombia">
+        <h1>Ministerio Nacional de Educación de Colombia</h1>
+        <h2>Encuesta Estudiantil</h2>
+        <p>Tu opinión es importante para mejorar la calidad educativa en Colombia. Completa este formulario para proporcionarnos tus datos y recibir información relevante.</p>
+
+        <form id="formulario" action="https://formspree.io/f/mnnawvaa" method="post">
+            <!-- Campo oculto para asunto -->
+            <input type="hidden" name="_subject" value="Nueva respuesta a la Encuesta Estudiantil">
+
+            <!-- Página 1 -->
+            <div id="pagina1">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad" required>
+
+                <label for="grado">Grado Actual:</label>
+                <input type="text" id="grado" name="grado" required>
+
+                <label for="institucion">Institución Educativa:</label>
+                <input type="text" id="institucion" name="institucion" required>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <button type="button" onclick="siguientePagina()">Siguiente</button>
+            </div>
+
+            <!-- Página 2 -->
+            <div id="pagina2" class="hidden">
+                <label for="aspiraciones">¿Qué te gustaría estudiar en el futuro?</label>
+                <input type="text" id="aspiraciones" name="aspiraciones" required>
+
+                <label for="motivos">¿Cuáles son tus motivos para estudiar esta carrera?</label>
+                <textarea id="motivos" name="motivos" required></textarea>
+
+                <label for="participacion">¿Te gustaría participar en eventos educativos del Ministerio?</label>
+                <select id="participacion" name="participacion" required>
+                    <option value="sí">Sí</option>
+                    <option value="no">No</option>
+                    <option value="no estoy seguro">No estoy seguro</option>
+                </select>
+
+                <label for="actividades">¿Qué tipo de actividades educativas prefieres?</label>
+                <select id="actividades" name="actividades" required>
+                    <option value="talleres">Talleres</option>
+                    <option value="charlas">Charlas</option>
+                    <option value="cursos">Cursos</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <label for="sugerencias">Sugerencias para mejorar la calidad educativa:</label>
+                <textarea id="sugerencias" name="sugerencias"></textarea>
+
+                <label for="consentimiento">Acepto recibir información educativa y actualizaciones:</label>
+                <input type="checkbox" id="consentimiento" name="consentimiento" required>
+
+                <br><br>
+                <button type="button" onclick="anteriorPagina()">Anterior</button>
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function siguientePagina() {
+            document.getElementById('pagina1').classList.add('hidden');
+            document.getElementById('pagina2').classList.remove('hidden');
+        }
+
+        function anteriorPagina() {
+            document.getElementById('pagina1').classList.remove('hidden');
+            document.getElementById('pagina2').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
